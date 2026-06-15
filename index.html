@@ -10,16 +10,22 @@
         <script>
             (function(){
                 try {
-                    var theme = localStorage.getItem('theme') || 'dark';
-                    if (theme === 'light') document.body.classList.add('light-theme');
+                    var theme = localStorage.getItem('theme') || 'light';
+                    if (theme === 'light') document.documentElement.classList.add('light-theme-early');
                     var css = document.createElement('style');
                     css.id = 'early-theme-bg';
                     if (theme === 'light') {
-                        css.innerHTML = 'html,body { background-color: #F3F2F2 !important; }';
+                        css.innerHTML = 'html,body { background-color: #F3F2F2 !important; color: #212121 !important; }';
                     } else {
                         css.innerHTML = 'html,body { background-color: #051416 !important; }';
                     }
                     document.head.appendChild(css);
+                    // Also set body class if body exists (unlikely at this point, but just in case)
+                    if (document.body && theme === 'light') {
+                        document.body.classList.add('light-theme');
+                    }
+                    // Store for app.js to pick up
+                    window.__earlyTheme = theme;
                 } catch (e) {
                     /* silent */
                 }

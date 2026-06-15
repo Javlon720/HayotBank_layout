@@ -60,22 +60,34 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Light/Dark Theme Switching
   // ==========================================
   const themeToggle = document.getElementById('theme-toggle');
-  let currentTheme = localStorage.getItem('theme') || 'light';
+  // Use the theme already detected by the early script in <head> to avoid flash
+  let currentTheme = window.__earlyTheme || localStorage.getItem('theme') || 'light';
 
-  // Apply initial theme class immediately to avoid flash (ensure light is first on load)
+  // Apply initial theme class immediately (no transition on load)
   if (currentTheme === 'light') {
     document.body.classList.add('light-theme');
   } else {
     document.body.classList.remove('light-theme');
   }
+  // Always persist to localStorage on load
+  localStorage.setItem('theme', currentTheme);
 
   function applyTheme(theme) {
+    // Add transitioning class for smooth animation, remove after transition ends
+    document.body.classList.add('theme-transitioning');
+    
     if (theme === 'light') {
       document.body.classList.add('light-theme');
     } else {
       document.body.classList.remove('light-theme');
     }
     localStorage.setItem('theme', theme);
+    currentTheme = theme;
+
+    // Remove transitioning class after CSS transition completes
+    setTimeout(() => {
+      document.body.classList.remove('theme-transitioning');
+    }, 350);
   }
 
   if (themeToggle) {
@@ -677,7 +689,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Load translations and initialize language-dependent UI
   await loadTranslations();
-  applyTheme(currentTheme);
   updateLanguage(currentLang);
   if (typeof setupCalculator === 'function') setupCalculator();
   if (typeof updateConversion === 'function') updateConversion();

@@ -103,6 +103,21 @@ body.light-theme {
   --section-bg-alt2: rgba(2, 103, 108, 0.02);
 }
 
+/* Smooth theme transition — only applied during toggle, not on page load */
+body.theme-transitioning,
+body.theme-transitioning *,
+body.theme-transitioning *::before,
+body.theme-transitioning *::after {
+  transition:
+    background-color 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease !important;
+}
+
+
 /* SVG Icon Masking System */
 .icon-svg {
   display: inline-block;
@@ -395,6 +410,17 @@ body {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
+}
+
+body.light-theme .btn-outline {
+  border-color: rgba(2, 103, 108, 0.25);
+  color: var(--hb-primary);
+}
+
+body.light-theme .btn-outline:hover {
+  background: rgba(2, 103, 108, 0.05);
+  border-color: rgba(2, 103, 108, 0.5);
+  color: var(--hb-primary);
 }
 
 .btn-block {
@@ -840,6 +866,11 @@ body.light-theme .rates-live-badge {
   padding: 16px 28px;
 }
 
+body.light-theme .hero-stats {
+  background: rgba(2, 103, 108, 0.04);
+  border-color: rgba(2, 103, 108, 0.1);
+}
+
 .stat-item {
   display: flex;
   flex-direction: column;
@@ -862,6 +893,10 @@ body.light-theme .rates-live-badge {
   width: 1px;
   height: 40px;
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .stat-divider {
+  background-color: rgba(2, 103, 108, 0.15);
 }
 
 /* 8. 3D Card Visuals & Card Customizer */
@@ -1400,11 +1435,19 @@ section {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+body.light-theme .currency-table th {
+  border-bottom-color: rgba(2, 103, 108, 0.1);
+}
+
 .currency-table td {
   padding: 20px;
   font-size: 1.5rem;
   color: var(--text-white);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+body.light-theme .currency-table td {
+  border-bottom-color: rgba(2, 103, 108, 0.06);
 }
 
 .currency-table tr:last-child td {
@@ -1471,6 +1514,11 @@ body.light-theme .currency-flag {
   border-radius: var(--border-radius-sm);
   overflow: hidden;
   transition: all 0.3s ease;
+}
+
+body.light-theme .input-with-select {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
 }
 
 .input-with-select:focus-within {
