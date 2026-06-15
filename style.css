@@ -61,7 +61,7 @@
   --section-bg-alt2: rgba(2, 103, 108, 0.02);
 
   /* Layout & Sizing */
-  --container-max-width: 1200px;
+  --container-max-width: 1240px;
   --container-padding: 0 24px;
   --border-radius-sm: 8px;
   --border-radius-md: 14px;
@@ -197,6 +197,7 @@ html {
   scroll-behavior: smooth;
   height: 100%;
   background-color: var(--dark-slate);
+  overflow-x: hidden;
 }
 
 body {
@@ -425,12 +426,18 @@ body.light-theme .btn-outline:hover {
   background: var(--dark-slate-light);
   border-bottom: 1px solid var(--header-scrolled-border);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   font-size: 1.25rem;
   color: var(--text-muted);
   position: relative;
   z-index: 1001;
   transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* Mobile second row — hidden on desktop */
+.top-header-mobile-row {
+  display: none;
 }
 
 .top-header-container {
@@ -643,7 +650,8 @@ body.light-theme .top-header .theme-toggle-btn .moon-icon { display: block; }
   font-weight: 500;
   color: var(--text-primary);
   transition: all 0.3s ease;
-  min-width: 170px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 body.light-theme .rates-live-badge {
@@ -669,12 +677,15 @@ body.light-theme .rates-live-badge {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
+  min-width: 0;
 }
 
 .logo {
   display: flex;
   align-items: center;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .logo-img {
@@ -731,7 +742,8 @@ body.light-theme .rates-live-badge {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 /* Mobile Menu Toggle button */
@@ -1954,7 +1966,79 @@ body.light-theme .chat-message-left .chat-message-content {
 }
 
 /* 17. Responsive Breakpoints */
+@media (max-width: 1280px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
 @media (max-width: 992px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .header-container {
+    gap: 12px;
+  }
+
+  .nav-list {
+    gap: 24px;
+  }
+
+  /* Main header: valyuta badge yashiriladi */
+  .rates-live-badge {
+    display: none !important;
+  }
+
+  /* Desktop searchni yashir */
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  /* Top-header ikkinchi qator (valyuta + search) ko'rinadi */
+  .top-header {
+    height: auto;
+    padding: 6px 0;
+    gap: 6px;
+  }
+
+  .top-header-mobile-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 6px;
+  }
+
+  /* Mobile valyuta badge */
+  .rates-live-badge-mobile {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(2, 103, 108, 0.05);
+    border: 1px solid rgba(2, 103, 108, 0.12);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Mobile search — to'liq kenglik */
+  .search-bar-mobile {
+    flex: 1;
+  }
+
+  .search-bar-mobile input {
+    width: 100% !important;
+    font-size: 1.2rem;
+  }
+
+  .search-bar-mobile input:focus {
+    width: 100% !important;
+  }
+
   .hero-container {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1991,23 +2075,23 @@ body.light-theme .chat-message-left .chat-message-content {
   }
 
   .nav {
-  position: fixed;
-  top: var(--header-height);
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-width: 390px;
-  margin: 0 auto;
-  height: calc(100vh - var(--header-height));
-  background: var(--dark-slate-light);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  padding: 40px;
-  transform: translateY(-120%);
-  transition: transform 0.4s ease-in-out;
-  z-index: 999;
-  border-bottom: 1px solid var(--header-scrolled-border);
-}
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    height: calc(100vh - var(--header-height));
+    background: var(--dark-slate-light);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 40px 24px;
+    transform: translateY(-120%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 999;
+    border-bottom: 1px solid var(--header-scrolled-border);
+  }
 
   .nav.active {
     transform: translateY(0);
@@ -2025,6 +2109,34 @@ body.light-theme .chat-message-left .chat-message-content {
 
   .hide-mobile {
     display: none !important;
+  }
+
+  /* Top header on tablet */
+  .search-bar input {
+    width: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .top-header-actions {
+    gap: 8px;
+  }
+
+  .search-bar input {
+    width: 90px;
+    font-size: 1.1rem;
+  }
+
+  .search-bar input:focus {
+    width: 120px;
+  }
+
+  .rates-live-badge {
+    display: none;
   }
 }
 
