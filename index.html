@@ -6,31 +6,6 @@
     <meta name="description" content="HayotBank - Zamonaviy, xavfsiz va aqlli raqamli bank xizmatlari. Kreditlar, omonatlar va onlayn tranzaksiyalar.">
     <title>HayotBank - Kelajak Banki</title>
     
-        <!-- Apply saved theme early to avoid flash-of-unstyled-theme -->
-        <script>
-            (function(){
-                try {
-                    var theme = localStorage.getItem('theme') || 'light';
-                    if (theme === 'light') document.documentElement.classList.add('light-theme-early');
-                    var css = document.createElement('style');
-                    css.id = 'early-theme-bg';
-                    if (theme === 'light') {
-                        css.innerHTML = 'html,body { background-color: #F3F2F2 !important; color: #212121 !important; }';
-                    } else {
-                        css.innerHTML = 'html,body { background-color: #051416 !important; }';
-                    }
-                    document.head.appendChild(css);
-                    // Also set body class if body exists (unlikely at this point, but just in case)
-                    if (document.body && theme === 'light') {
-                        document.body.classList.add('light-theme');
-                    }
-                    // Store for app.js to pick up
-                    window.__earlyTheme = theme;
-                } catch (e) {
-                    /* silent */
-                }
-            })();
-        </script>
 
         <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,7 +29,7 @@
             </div>
             <div class="top-header-actions">
                 <div class="search-bar">
-                    <input type="text" data-translate-placeholder="search_placeholder">
+                    <input type="text" data-translate-placeholder="search_placeholder" placeholder="...Qidiruv">
                     <span class="icon-svg icon-search"></span>
                 </div>
                 <div class="lang-selector">
@@ -63,10 +38,6 @@
                         <option value="ru">RU</option>
                     </select>
                 </div>
-                <button class="theme-toggle-btn" id="theme-toggle" data-translate-aria="theme_aria">
-                    <span class="icon-svg icon-sun sun-icon"></span>
-                    <span class="icon-svg icon-moon moon-icon"></span>
-                </button>
                 <a href="#" class="btn-login-link" data-translate="kirish"></a>
             </div>
         </div>

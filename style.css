@@ -23,42 +23,42 @@
   --purple: #8B5CF6;
   --purple-hover: #7C3AED;
 
-  /* Defaults (Dark Theme) */
-  --dark-slate: #051416;
-  --dark-slate-light: #0B2529;
-  --dark-slate-card: rgba(11, 37, 41, 0.65);
+  /* Light Mode (Default) */
+  --dark-slate: #F3F2F2;
+  --dark-slate-light: #FFFFFF;
+  --dark-slate-card: rgba(255, 255, 255, 0.85);
 
   /* Text Colors */
-  --text-white: #FFFFFF;
-  --text-primary: #E6F3F5;
-  --text-muted: #8FA4A7;
+  --text-white: #111827;
+  --text-primary: #212121;
+  --text-muted: #6B7280;
   --text-dark: #1F2937;
 
   /* Shadows & Glassmorphism */
-  --glass-bg: rgba(11, 37, 41, 0.45);
-  --glass-border: rgba(255, 255, 255, 0.07);
-  --glass-border-hover: rgba(255, 255, 255, 0.15);
-  --glass-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(2, 103, 108, 0.12);
+  --glass-border-hover: rgba(2, 103, 108, 0.25);
+  --glass-glow: 0 8px 32px 0 rgba(2, 103, 108, 0.06);
 
   /* Ambient glow opacity */
-  --glow-opacity: 0.45;
+  --glow-opacity: 0.15;
 
   /* Logo filter */
-  --logo-filter: brightness(0) invert(1);
+  --logo-filter: none;
 
   /* Highlight color for headers */
-  --highlight-color: #FFFFFF;
+  --highlight-color: var(--emerald);
 
   /* Section & Component Theme Properties */
-  --header-scrolled-bg: rgba(5, 20, 22, 0.8);
-  --header-scrolled-border: rgba(255, 255, 255, 0.05);
-  --header-scrolled-shadow: rgba(0, 0, 0, 0.5);
+  --header-scrolled-bg: rgba(255, 255, 255, 0.85);
+  --header-scrolled-border: rgba(2, 103, 108, 0.08);
+  --header-scrolled-shadow: rgba(2, 103, 108, 0.15);
 
-  --footer-bg: #030d0e;
-  --footer-border: rgba(255, 255, 255, 0.05);
+  --footer-bg: #EBEBEB;
+  --footer-border: rgba(2, 103, 108, 0.08);
 
-  --section-bg-alt1: rgba(2, 103, 108, 0.05);
-  --section-bg-alt2: rgba(5, 20, 22, 0.3);
+  --section-bg-alt1: rgba(2, 103, 108, 0.04);
+  --section-bg-alt2: rgba(2, 103, 108, 0.02);
 
   /* Layout & Sizing */
   --container-max-width: 1200px;
@@ -71,50 +71,6 @@
   /* Fonts */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-outfit: 'Outfit', sans-serif;
-}
-
-/* Light Theme Overrides */
-body.light-theme {
-  --dark-slate: #F3F2F2;
-  --dark-slate-light: #FFFFFF;
-  --dark-slate-card: rgba(255, 255, 255, 0.85);
-
-  --text-white: #111827;
-  --text-primary: #212121;
-  --text-muted: #6B7280;
-
-  --glass-bg: rgba(255, 255, 255, 0.75);
-  --glass-border: rgba(2, 103, 108, 0.12);
-  --glass-border-hover: rgba(2, 103, 108, 0.25);
-  --glass-glow: 0 8px 32px 0 rgba(2, 103, 108, 0.06);
-
-  --glow-opacity: 0.15;
-  --logo-filter: none;
-  --highlight-color: var(--emerald);
-
-  --header-scrolled-bg: rgba(255, 255, 255, 0.85);
-  --header-scrolled-border: rgba(2, 103, 108, 0.08);
-  --header-scrolled-shadow: rgba(2, 103, 108, 0.15);
-
-  --footer-bg: #EBEBEB;
-  --footer-border: rgba(2, 103, 108, 0.08);
-
-  --section-bg-alt1: rgba(2, 103, 108, 0.04);
-  --section-bg-alt2: rgba(2, 103, 108, 0.02);
-}
-
-/* Smooth theme transition — only applied during toggle, not on page load */
-body.theme-transitioning,
-body.theme-transitioning *,
-body.theme-transitioning *::before,
-body.theme-transitioning *::after {
-  transition:
-    background-color 0.3s ease,
-    background 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    filter 0.3s ease !important;
 }
 
 
@@ -508,8 +464,8 @@ body.light-theme .btn-outline:hover {
 }
 
 .search-bar input {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(2, 103, 108, 0.04);
+  border: 1px solid var(--hb-primary);
   border-radius: 20px;
   padding: 6px 12px 6px 32px;
   color: var(--text-primary);
@@ -521,30 +477,17 @@ body.light-theme .btn-outline:hover {
 }
 
 .search-bar input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-body.light-theme .search-bar input::placeholder {
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--hb-primary);
+  opacity: 0.7;
 }
 
 .search-bar input:focus {
   width: 180px;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--hb-primary);
+  background: rgba(2, 103, 108, 0.07);
+  border-color: var(--hb-primary-hover);
+  box-shadow: 0 0 0 2px rgba(2, 103, 108, 0.15);
 }
 
-body.light-theme .search-bar input {
-  background: rgba(0, 0, 0, 0.03);
-  border-color: rgba(0, 0, 0, 0.08);
-  color: var(--text-primary);
-}
-
-body.light-theme .search-bar input:focus {
-  background: #FFFFFF;
-  border-color: var(--hb-primary);
-  box-shadow: 0 0 0 2px rgba(2, 103, 108, 0.1);
-}
 
 .search-bar .icon-search {
   position: absolute;
@@ -595,7 +538,7 @@ body.light-theme .top-header .lang-selector select option {
   color: var(--text-white);
 }
 
-/* Theme Toggle Button in Top Header */
+/* Theme Toggle Button in Top Header — DISABLED
 .top-header .theme-toggle-btn {
   width: 28px;
   height: 28px;
@@ -632,6 +575,14 @@ body.light-theme .top-header .theme-toggle-btn:hover {
   width: 14px;
   height: 14px;
 }
+
+.top-header .theme-toggle-btn .sun-icon { display: block; }
+.top-header .theme-toggle-btn .moon-icon { display: none; }
+
+body.light-theme .top-header .theme-toggle-btn .sun-icon { display: none; }
+body.light-theme .top-header .theme-toggle-btn .moon-icon { display: block; }
+*/
+
 
 /* Login Link "Kirish" button style */
 .btn-login-link {
@@ -2040,20 +1991,23 @@ body.light-theme .chat-message-left .chat-message-content {
   }
 
   .nav {
-    position: fixed;
-    top: var(--header-height);
-    left: 0;
-    width: 100%;
-    height: calc(100vh - var(--header-height));
-    background: var(--dark-slate-light);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 40px;
-    transform: translateY(-120%);
-    transition: transform 0.4s ease-in-out;
-    z-index: 999;
-    border-bottom: 1px solid var(--header-scrolled-border);
-  }
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  height: calc(100vh - var(--header-height));
+  background: var(--dark-slate-light);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 40px;
+  transform: translateY(-120%);
+  transition: transform 0.4s ease-in-out;
+  z-index: 999;
+  border-bottom: 1px solid var(--header-scrolled-border);
+}
 
   .nav.active {
     transform: translateY(0);
@@ -2117,8 +2071,8 @@ body.light-theme .chat-message-left .chat-message-content {
 }
 
 /* ==========================================
- * Theme Toggle & Language Selector Styles
- * ========================================== */
+ * Theme Toggle Styles — DISABLED
+ * ==========================================
 .theme-toggle-btn {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -2162,6 +2116,7 @@ body.light-theme .theme-toggle-btn .sun-icon {
 body.light-theme .theme-toggle-btn .moon-icon {
   display: block;
 }
+*/
 
 /* Lang Selector */
 .lang-selector {
@@ -2194,8 +2149,8 @@ body.light-theme .theme-toggle-btn .moon-icon {
 }
 
 /* ==========================================
- * Light Theme Specific Overrides
- * ========================================== */
+ * Light Theme Specific Overrides — Toggle DISABLED
+ * ==========================================
 body.light-theme .theme-toggle-btn {
   border-color: rgba(0, 0, 0, 0.1);
   color: var(--text-muted);
@@ -2206,6 +2161,7 @@ body.light-theme .theme-toggle-btn:hover {
   border-color: rgba(0, 0, 0, 0.3);
   color: var(--text-primary);
 }
+*/
 
 body.light-theme .lang-selector select {
   border-color: rgba(0, 0, 0, 0.1);
