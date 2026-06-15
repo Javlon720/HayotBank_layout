@@ -519,32 +519,62 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   let currentRateIndex = 1;
   const ratesLiveBadge = document.getElementById('rates-live-badge');
+  const ratesLiveBadgeMobile = document.querySelector('.rates-live-badge-mobile');
 
-  if (ratesLiveBadge) {
-    const flagImg = ratesLiveBadge.querySelector('.currency-flag');
-    const rateText = ratesLiveBadge.querySelector('.live-rate-text');
+  if (ratesLiveBadge || ratesLiveBadgeMobile) {
+    const flagImg = ratesLiveBadge ? ratesLiveBadge.querySelector('.currency-flag') : null;
+    const rateText = ratesLiveBadge ? ratesLiveBadge.querySelector('.live-rate-text') : null;
+    
+    const flagImgMobile = ratesLiveBadgeMobile ? ratesLiveBadgeMobile.querySelector('.currency-flag') : null;
+    const rateTextMobile = ratesLiveBadgeMobile ? ratesLiveBadgeMobile.querySelector('.live-rate-text') : null;
 
     function updateLiveRate() {
-      ratesLiveBadge.style.opacity = '0';
-      ratesLiveBadge.style.transform = 'translateY(-5px)';
+      if (ratesLiveBadge) {
+        ratesLiveBadge.style.opacity = '0';
+        ratesLiveBadge.style.transform = 'translateY(-5px)';
+      }
+      if (ratesLiveBadgeMobile) {
+        ratesLiveBadgeMobile.style.opacity = '0';
+        ratesLiveBadgeMobile.style.transform = 'translateY(-5px)';
+      }
       
       setTimeout(() => {
         const item = liveRates[currentRateIndex];
-        if (flagImg) {
-          flagImg.src = item.flag;
-          flagImg.alt = item.currency;
+        
+        if (ratesLiveBadge) {
+          if (flagImg) {
+            flagImg.src = item.flag;
+            flagImg.alt = item.currency;
+          }
+          if (rateText) {
+            rateText.textContent = `${item.currency} / UZS: ${item.rate}`;
+          }
+          ratesLiveBadge.style.opacity = '1';
+          ratesLiveBadge.style.transform = 'translateY(0)';
         }
-        if (rateText) {
-          rateText.textContent = `${item.currency} / UZS: ${item.rate}`;
+
+        if (ratesLiveBadgeMobile) {
+          if (flagImgMobile) {
+            flagImgMobile.src = item.flag;
+            flagImgMobile.alt = item.currency;
+          }
+          if (rateTextMobile) {
+            rateTextMobile.textContent = `${item.currency} / UZS: ${item.rate}`;
+          }
+          ratesLiveBadgeMobile.style.opacity = '1';
+          ratesLiveBadgeMobile.style.transform = 'translateY(0)';
         }
         
-        ratesLiveBadge.style.opacity = '1';
-        ratesLiveBadge.style.transform = 'translateY(0)';
         currentRateIndex = (currentRateIndex + 1) % liveRates.length;
       }, 300);
     }
 
-    ratesLiveBadge.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    if (ratesLiveBadge) {
+      ratesLiveBadge.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    }
+    if (ratesLiveBadgeMobile) {
+      ratesLiveBadgeMobile.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    }
     
     // Cycle every 2 seconds
     setInterval(updateLiveRate, 2000);

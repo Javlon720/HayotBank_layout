@@ -436,8 +436,8 @@ body.light-theme .btn-outline:hover {
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-/* Mobile second row — hidden on desktop */
-.top-header-mobile-row {
+/* Mobile search & rates row — hidden on desktop */
+.mobile-search-rates-row {
   display: none;
 }
 
@@ -1996,18 +1996,44 @@ body.light-theme .chat-message-left .chat-message-content {
     display: none !important;
   }
 
-  /* Top-header ikkinchi qator (valyuta + search) ko'rinadi */
+  /* Top-header layout for mobile */
   .top-header {
-    height: auto;
-    padding: 6px 0;
-    gap: 6px;
+    height: 40px;
+    display: block;
+    padding: 0;
   }
 
-  .top-header-mobile-row {
+  .top-header-container {
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding-bottom: 6px;
+  }
+
+  .top-header-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* Mobile search & rates row — visible on mobile */
+  .mobile-search-rates-row {
+    display: block;
+    background: var(--dark-slate-light);
+    border-bottom: 1px solid var(--header-scrolled-border);
+    padding: 8px 0;
+    width: 100%;
+    position: relative;
+    z-index: 99;
+  }
+
+  .mobile-row-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
   }
 
   /* Mobile valyuta badge */
@@ -2038,6 +2064,11 @@ body.light-theme .chat-message-left .chat-message-content {
 
   .search-bar-mobile input:focus {
     width: 100% !important;
+  }
+
+  .hero {
+    padding-top: 100px;
+    padding-bottom: 60px;
   }
 
   .hero-container {
@@ -2140,25 +2171,10 @@ body.light-theme .chat-message-left .chat-message-content {
     display: none;
   }
 
-  /* Fixed mobile row: place below stacked header and top-header */
-  .top-header-mobile-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    position:"";
-    left: 0;
-    right: 0;
-    top:130px;
-    /* top: calc(var(--header-height) + var(--top-header-height)); */
-    /* background: var(--dark-slate-light); */
-    /* border-bottom: 1px solid var(--header-scrolled-border); */
-    z-index: 999;
-  }
-
-  /* Ensure hero content is pushed below the fixed mobile row */
+  /* Adjust padding-top on mobile to accommodate header elements nicely */
   .hero {
-    margin-top: calc(var(--header-height) + var(--top-header-height) + 8px);
+    padding-top: 90px;
+    margin-top: 0;
   }
 }
 
