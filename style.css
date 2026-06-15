@@ -1132,8 +1132,8 @@ body.light-theme .stat-divider {
 .form-group input {
   width: 100%;
   height: var(--hb-input-height);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(16, 185, 129, 0.03);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   border-radius: var(--border-radius-sm);
   color: var(--text-white);
   padding: 0 16px;
@@ -1569,16 +1569,16 @@ body.light-theme .currency-flag {
   display: flex;
   width: 100%;
   height: var(--hb-input-height);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(16, 185, 129, 0.03);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   border-radius: var(--border-radius-sm);
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 body.light-theme .input-with-select {
-  background: rgba(0, 0, 0, 0.02);
-  border-color: rgba(0, 0, 0, 0.08);
+  background: rgba(16, 185, 129, 0.03);
+  border-color: rgba(16, 185, 129, 0.25);
 }
 
 .input-with-select:focus-within {
@@ -1599,9 +1599,9 @@ body.light-theme .input-with-select {
 }
 
 .input-with-select select {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(16, 185, 129, 0.03);
   border: none;
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid rgba(16, 185, 129, 0.25);
   color: var(--text-white);
   padding: 0 20px;
   font-size: 1.5rem;
@@ -2020,8 +2020,8 @@ body.light-theme .chat-message-left .chat-message-content {
 
 .subscribe-form input {
   flex: 1;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(16, 185, 129, 0.03);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   border-radius: var(--border-radius-sm);
   color: var(--text-white);
   padding: 10px 16px;
@@ -2378,16 +2378,16 @@ body.light-theme .form-group input,
 body.light-theme .subscribe-form input,
 body.light-theme .input-with-select input {
   color: var(--text-primary);
-  background: rgba(0, 0, 0, 0.03);
-  border-color: rgba(16, 185, 129, 0.2);
+  background: rgba(16, 185, 129, 0.03);
+  border-color: rgba(16, 185, 129, 0.25);
 }
 
 body.light-theme .form-group input:focus,
 body.light-theme .subscribe-form input:focus,
 body.light-theme .input-with-select input:focus {
-  background: #FFFFFF;
+  background: rgba(16, 185, 129, 0.07);
   border-color: var(--emerald);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
 }
 
 body.light-theme .input-with-select select {
