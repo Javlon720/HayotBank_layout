@@ -623,7 +623,7 @@ body.light-theme .top-header .theme-toggle-btn .moon-icon { display: block; }
 /* Main Header Sticky Behavior */
 .header {
   position: sticky;
-  top: 40px;
+  top: 0px;
   left: 0;
   width: 100%;
   height: var(--header-height);
@@ -1853,7 +1853,7 @@ body.light-theme .chat-message-left .chat-message-content {
 /* Open Accordion States */
 .faq-item.active {
   border-color: rgba(16, 185, 129, 0.25);
-  background: rgba(11, 37, 41, 0.6);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .faq-item.active .faq-icon {
