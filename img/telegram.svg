@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100" height="100">
+  <defs>
+    <!-- Maska: oq rang ko'rinadigan, qora rang shaffof (yashirin) -->
+    <mask id="telegram_mask">
+      <!-- Maskaning ko'rinadigan qismini oq rang bilan to'ldiramiz -->
+      <rect x="0" y="0" width="24" height="24" fill="white"/>
+      <!-- Samolyotcha shaklini qora rangda chizamiz, bu maskani shaffof qiladi -->
+      <path fill="black" d="M18.384 5.776l-14.28 5.51c-1.248.5-1.242 1.195-.228 1.5l3.666 1.144 8.5-5.36c.4-.24.77-.11.46.16l-6.88 6.21-.26 3.91c.38 0 .55-.17.76-.38l1.83-1.78 3.81 2.81c.7.39 1.21.19 1.38-.63l2.5-11.78c.24-1.02-.38-1.49-1.26-1.12z"/>
+    </mask>
+  </defs>
+
+  <!-- Yakuniy logotip: qora doira, unga maska qo'llaniladi -->
+  <circle cx="12" cy="12" r="12" fill="#000000" mask="url(#telegram_mask)"/>
+</svg>

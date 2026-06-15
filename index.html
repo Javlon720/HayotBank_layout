@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HayotBank - Zamonaviy, xavfsiz va aqlli raqamli bank xizmatlari. Kreditlar, omonatlar va onlayn tranzaksiyalar.">
+    <title>HayotBank - Kelajak Banki</title>
+    
+        <!-- Apply saved theme early to avoid flash-of-unstyled-theme -->
+        <script>
+            (function(){
+                try {
+                    var theme = localStorage.getItem('theme') || 'dark';
+                    if (theme === 'light') document.body.classList.add('light-theme');
+                    var css = document.createElement('style');
+                    css.id = 'early-theme-bg';
+                    if (theme === 'light') {
+                        css.innerHTML = 'html,body { background-color: #F3F2F2 !important; }';
+                    } else {
+                        css.innerHTML = 'html,body { background-color: #051416 !important; }';
+                    }
+                    document.head.appendChild(css);
+                } catch (e) {
+                    /* silent */
+                }
+            })();
+        </script>
+
+        <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Glow Elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container top-header-container">
+            <div class="top-header-left">
+                <span class="top-header-info hide-mobile" data-translate="top_header_info"></span>
+            </div>
+            <div class="top-header-actions">
+                <div class="search-bar">
+                    <input type="text" data-translate-placeholder="search_placeholder">
+                    <span class="icon-svg icon-search"></span>
+                </div>
+                <div class="lang-selector">
+                    <select id="lang-select" aria-label="Tilni tanlash">
+                        <option value="uz">UZ</option>
+                        <option value="ru">RU</option>
+                    </select>
+                </div>
+                <button class="theme-toggle-btn" id="theme-toggle" data-translate-aria="theme_aria">
+                    <span class="icon-svg icon-sun sun-icon"></span>
+                    <span class="icon-svg icon-moon moon-icon"></span>
+                </button>
+                <a href="#" class="btn-login-link" data-translate="kirish"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="header" id="header">
+        <div class="container header-container">
+                <a href="#" class="logo" id="logo">
+                <img src="img/HayotBankLogo.svg" alt="HayotBank" class="logo-img">
+            </a>
+
+            <nav class="nav" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#hero" class="nav-link active" data-translate="nav_home"></a></li>
+                    <li><a href="#calculator" class="nav-link" data-translate="nav_calc"></a></li>
+                    <li><a href="#features" class="nav-link" data-translate="nav_services"></a></li>
+                    <li><a href="#rates" class="nav-link" data-translate="nav_rates"></a></li>
+                    <li><a href="#faq" class="nav-link" data-translate="nav_faq"></a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="rates-live-badge" id="rates-live-badge">
+                    <img src="img/flag-usa.svg" class="currency-flag" alt="USA">
+                    <span class="live-rate-text">USD / UZS: 12,680</span>
+                </div>
+                <a href="#calculator" class="btn btn-secondary btn-sm hide-mobile" data-translate="omonat_ochish"></a>
+                <button class="menu-toggle" id="menu-toggle" data-translate-aria="menu_aria">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge animate-fade-in" data-translate="hero_badge"></div>
+                <h1 class="hero-title animate-slide-up" data-translate="hero_title"></h1>
+                <p class="hero-description animate-slide-up-delay" data-translate="hero_description"></p>
+                <div class="hero-btns animate-slide-up-delay-2">
+                    <a href="#calculator" class="btn btn-primary" data-translate="hero_btn_start"></a>
+                    <a href="#features" class="btn btn-outline" data-translate="hero_btn_more"></a>
+                </div>
+                <div class="hero-stats animate-fade-in-delay">
+                    <div class="stat-item">
+                        <span class="stat-num">500K+</span>
+                        <span class="stat-label" data-translate="hero_stat_clients"></span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">99.9%</span>
+                        <span class="stat-label" data-translate="hero_stat_uptime"></span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">0%</span>
+                        <span class="stat-label" data-translate="hero_stat_commission"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <!-- 3D Interactive Card Container -->
+                <div class="card-3d-wrapper" id="card-3d-wrapper">
+                    <div class="card-3d" id="card-3d">
+                        <div class="card-front">
+                            <div class="card-glow"></div>
+                                        <div class="card-header">
+                                            <span class="card-brand">Hayot Bank</span>
+                                        </div>
+                            <div class="card-chip">
+                                <img src="img/card-chip.svg" alt="Card Chip" width="45" height="35" class="card-chip-img">
+                                <span class="icon-svg icon-contactless contactless"></span>
+                            </div>
+                            <div class="card-number" id="preview-card-number">•••• •••• •••• 8842</div>
+                            <div class="card-footer">
+                                <div class="card-holder">
+                                    <span class="label" data-translate="card_holder_label"></span>
+                                    <span class="val" id="preview-card-name"></span>
+                                </div>
+                                <div class="card-expiry">
+                                    <span class="label" data-translate="card_expiry_label"></span>
+                                    <span class="val">12/30</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-customizer card-glass">
+                    <h3 data-translate="card_customizer_title"></h3>
+                    <div class="form-group">
+                        <label for="card-holder-input" data-translate="card_customizer_holder_label"></label>
+                        <input type="text" id="card-holder-input" value="" maxlength="22" data-translate-placeholder="card_customizer_placeholder">
+                    </div>
+                    <div class="card-color-picker">
+                        <label data-translate="card_customizer_design_label"></label>
+                        <div class="colors-row">
+                            <span class="color-dot dot-emerald active" data-color="emerald" title="Emerald Glow"></span>
+                            <span class="color-dot dot-indigo" data-color="indigo" title="Indigo Night"></span>
+                            <span class="color-dot dot-sunset" data-color="sunset" title="Sunset Gold"></span>
+                            <span class="color-dot dot-dark" data-color="dark" title="Carbon Premium"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section" id="calculator">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title" data-translate="calc_section_title"></h2>
+                <p class="section-subtitle" data-translate="calc_section_subtitle"></p>
+            </div>
+            
+            <div class="calc-grid">
+                <div class="calc-card card-glass">
+                    <div class="calc-toggle">
+                        <button class="calc-tab active" data-type="loan" data-translate="calc_tab_loan"></button>
+                        <button class="calc-tab" data-type="deposit" data-translate="calc_tab_deposit"></button>
+                    </div>
+                    
+                    <div class="calc-body">
+                        <!-- Amount Slider -->
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <span class="slider-label" id="amount-label-text" data-translate="calc_loan_amount_label"></span>
+                                <span class="slider-value" id="amount-value-display">10,000,000 UZS</span>
+                            </div>
+                            <input type="range" id="calc-amount" min="1000000" max="100000000" step="500000" value="15000000" class="range-slider">
+                            <div class="slider-limits">
+                                <span>1 mln UZS</span>
+                                <span>100 mln UZS</span>
+                            </div>
+                        </div>
+
+                        <!-- Duration Slider -->
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <span class="slider-label" data-translate="calc_duration_label"></span>
+                                <span class="slider-value" id="duration-value-display">12 oy</span>
+                            </div>
+                            <input type="range" id="calc-duration" min="3" max="36" step="1" value="12" class="range-slider">
+                            <div class="slider-limits">
+                                <span>3 oy</span>
+                                <span>36 oy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-summary card-glass-emerald">
+                    <h3 data-translate="calc_result_title"></h3>
+                    <div class="summary-details">
+                        <div class="summary-item">
+                            <span class="sum-label" data-translate="calc_rate_label"></span>
+                            <span class="sum-value" id="rate-display">22%</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="sum-label" id="total-return-label-text" data-translate="calc_total_return_loan_label"></span>
+                            <span class="sum-value" id="total-return-display">17,200,000 UZS</span>
+                        </div>
+                        <div class="summary-item highlight">
+                            <span class="sum-label" id="payment-label-text" data-translate="calc_monthly_payment_loan_label"></span>
+                            <span class="sum-value" id="monthly-payment-display">1,433,333 UZS</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-block" data-translate="calc_btn_apply"></button>
+                    <p class="calc-disclaimer" data-translate="calc_disclaimer"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Features Grid -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title" data-translate="features_title"></h2>
+                <p class="section-subtitle" data-translate="features_subtitle"></p>
+            </div>
+
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card card-glass scroll-reveal">
+                    <div class="feature-icon icon-emerald">
+                        <span class="icon-svg icon-security"></span>
+                    </div>
+                    <h3 data-translate="feature_1_title"></h3>
+                    <p data-translate="feature_1_desc"></p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card card-glass scroll-reveal">
+                    <div class="feature-icon icon-indigo">
+                        <span class="icon-svg icon-speed"></span>
+                    </div>
+                    <h3 data-translate="feature_2_title"></h3>
+                    <p data-translate="feature_2_desc"></p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card card-glass scroll-reveal">
+                    <div class="feature-icon icon-gold">
+                        <span class="icon-svg icon-cashback"></span>
+                    </div>
+                    <h3 data-translate="feature_3_title"></h3>
+                    <p data-translate="feature_3_desc"></p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card card-glass scroll-reveal">
+                    <div class="feature-icon icon-purple">
+                        <span class="icon-svg icon-analytics"></span>
+                    </div>
+                    <h3 data-translate="feature_4_title"></h3>
+                    <p data-translate="feature_4_desc"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Currency Section -->
+    <section class="currency-section" id="rates">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title" data-translate="rates_title"></h2>
+                <p class="section-subtitle" data-translate="rates_subtitle"></p>
+            </div>
+
+            <div class="currency-grid">
+                <!-- Rates Table -->
+                <div class="currency-table-wrapper card-glass">
+                    <table class="currency-table">
+                        <thead>
+                            <tr>
+                                <th data-translate="rates_th_currency"></th>
+                                <th data-translate="rates_th_buy"></th>
+                                <th data-translate="rates_th_sell"></th>
+                                <th data-translate="rates_th_dynamic"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="currency-name">
+                                    <img src="img/flag-usa.svg" class="currency-flag" alt="USA">
+                                    USD / UZS
+                                </td>
+                                <td id="usd-buy">12,620</td>
+                                <td id="usd-sell">12,680</td>
+                                <td class="rate-up">▲ +0.15%</td>
+                            </tr>
+                            <tr>
+                                <td class="currency-name">
+                                    <img src="img/flag-eu.svg" class="currency-flag" alt="EU">
+                                    EUR / UZS
+                                </td>
+                                <td id="eur-buy">13,540</td>
+                                <td id="eur-sell">13,620</td>
+                                <td class="rate-down">▼ -0.05%</td>
+                            </tr>
+                            <tr>
+                                <td class="currency-name">
+                                    <img src="img/flag-ru.svg" class="currency-flag" alt="RU">
+                                    RUB / UZS
+                                </td>
+                                <td id="rub-buy">138.5</td>
+                                <td id="rub-sell">144.5</td>
+                                <td class="rate-up">▲ +0.80%</td>
+                            </tr>
+                            <tr>
+                                <td class="currency-name">
+                                    <img src="img/flag-uk.svg" class="currency-flag" alt="UK">
+                                    GBP / UZS
+                                </td>
+                                <td id="gbp-buy">16,050</td>
+                                <td id="gbp-sell">16,180</td>
+                                <td class="rate-up">▲ +0.22%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Converter Card -->
+                <div class="converter-card card-glass">
+                    <h3 data-translate="rates_converter_title"></h3>
+                    <div class="converter-form">
+                        <div class="input-with-select">
+                            <input type="number" id="converter-amount" value="100">
+                            <select id="converter-from">
+                                <option value="USD" selected>USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="RUB">RUB</option>
+                                <option value="GBP">GBP</option>
+                                <option value="UZS">UZS</option>
+                            </select>
+                        </div>
+                        <div class="converter-arrow">
+                            <span class="icon-svg icon-chevron-down"></span>
+                        </div>
+                        <div class="input-with-select">
+                            <input type="text" id="converter-result" readonly value="1,262,000">
+                            <select id="converter-to">
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="RUB">RUB</option>
+                                <option value="GBP">GBP</option>
+                                <option value="UZS" selected>UZS</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+                <div class="section-header text-center">
+                <h2 class="section-title" data-translate="testi_title"></h2>
+                <p class="section-subtitle" data-translate="testi_subtitle"></p>
+            </div>
+
+            <div class="chat-wrapper scroll-reveal">
+                <!-- Chat Window Header -->
+                <div class="chat-header">
+                    <div class="chat-header-info">
+                        <div class="chat-header-avatar">HB</div>
+                        <div class="chat-header-text">
+                            <h3 data-translate="chat_group_title"></h3>
+                            <span class="chat-online-count"><span class="online-dot"></span> <span data-translate="chat_online_text"></span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chat Feed/Messages -->
+                <div class="chat-feed" id="chat-feed">
+                    <!-- Message 1: Sardor -->
+                    <div class="chat-message chat-message-left">
+                        <div class="chat-user-avatar avatar-orange">SB</div>
+                        <div class="chat-message-content">
+                            <div class="chat-message-user">
+                                <span class="user-name">Sardor Bekmurodov</span>
+                                <span class="user-role" data-translate="testi_1_role"></span>
+                            </div>
+                            <p class="chat-text" data-translate="testi_1_text"></p>
+                            <span class="chat-time">10:24</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Message 2: Nigora -->
+                    <div class="chat-message chat-message-right">
+                        <div class="chat-message-content">
+                            <div class="chat-message-user">
+                                <span class="user-name">Nigora Karimova</span>
+                                <span class="user-role" data-translate="testi_2_role"></span>
+                            </div>
+                            <p class="chat-text" data-translate="testi_2_text"></p>
+                            <span class="chat-time">11:05</span>
+                        </div>
+                        <div class="chat-user-avatar avatar-emerald">NK</div>
+                    </div>
+
+                    <!-- Message 3: Alisher -->
+                    <div class="chat-message chat-message-left">
+                        <div class="chat-user-avatar avatar-purple">AU</div>
+                        <div class="chat-message-content">
+                            <div class="chat-message-user">
+                                <span class="user-name">Alisher Ubaydullaev</span>
+                                <span class="user-role" data-translate="testi_3_role"></span>
+                            </div>
+                            <p class="chat-text" data-translate="testi_3_text"></p>
+                            <span class="chat-time">12:15</span>
+                        </div>
+                    </div>
+
+                    <!-- Message 4: Dilnoza -->
+                    <div class="chat-message chat-message-right">
+                        <div class="chat-message-content">
+                            <div class="chat-message-user">
+                                <span class="user-name">Dilnoza Saidova</span>
+                                <span class="user-role" data-translate="testi_4_role"></span>
+                            </div>
+                            <p class="chat-text" data-translate="testi_4_text"></p>
+                            <span class="chat-time">14:30</span>
+                        </div>
+                        <div class="chat-user-avatar avatar-blue">DS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container container-sm">
+            <div class="section-header text-center">
+                <h2 class="section-title" data-translate="faq_title">Ko'p Beriladigan Savollar</h2>
+                <p class="section-subtitle" data-translate="faq_subtitle">Bank xizmatlariga doir tez-tez so'raladigan savollarga javoblar</p>
+            </div>
+
+            <div class="faq-list">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item card-glass">
+                    <button class="faq-question">
+                        <span data-translate="faq_1_q"></span>
+                        <span class="icon-svg icon-plus faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content" data-translate="faq_1_a"></div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item card-glass">
+                    <button class="faq-question">
+                        <span data-translate="faq_2_q"></span>
+                        <span class="icon-svg icon-plus faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content" data-translate="faq_2_a"></div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item card-glass">
+                    <button class="faq-question">
+                        <span data-translate="faq_3_q"></span>
+                        <span class="icon-svg icon-plus faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content" data-translate="faq_3_a"></div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item card-glass">
+                    <button class="faq-question">
+                        <span data-translate="faq_4_q"></span>
+                        <span class="icon-svg icon-plus faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content" data-translate="faq_4_a"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand-col">
+                <a href="#" class="logo footer-logo">
+                    <img src="img/HayotBankLogo.svg" alt="HayotBank" class="logo-img">
+                </a>
+                <p class="footer-about" data-translate="footer_about">
+                    Hayot uchun xavfsiz va aqlli bank xizmatlari. Markaziy Bank tomonidan berilgan litsenziya № 254.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Telegram">
+                        <span class="icon-svg icon-telegram"></span>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <span class="icon-svg icon-instagram"></span>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <span class="icon-svg icon-facebook"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links-col">
+                <h4 data-translate="footer_heading_services"></h4>
+                <ul>
+                    <li><a href="#calculator" data-translate="footer_link_microloans"></a></li>
+                    <li><a href="#calculator" data-translate="footer_link_deposits"></a></li>
+                    <li><a href="#features" data-translate="footer_link_cashback"></a></li>
+                    <li><a href="#rates" data-translate="footer_link_exchange"></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-col">
+                <h4 data-translate="footer_heading_docs"></h4>
+                <ul>
+                    <li><a href="#" data-translate="footer_link_licenses"></a></li>
+                    <li><a href="#" data-translate="footer_link_rates"></a></li>
+                    <li><a href="#" data-translate="footer_link_privacy"></a></li>
+                    <li><a href="#" data-translate="footer_link_terms"></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-col">
+                <h4 data-translate="footer_heading_subscribe"></h4>
+                <p class="subscribe-text" data-translate="footer_subscribe_desc"></p>
+                <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Obuna bo\'lingani uchun rahmat!');">
+                    <input type="email" required data-translate-placeholder="footer_subscribe_placeholder">
+                    <button type="submit" class="btn btn-primary btn-sm" data-translate="footer_subscribe_btn"></button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p data-translate="footer_copyright"></p>
+                <p data-translate="footer_creator"></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
