@@ -25,7 +25,17 @@
     <div class="top-header">
         <div class="container top-header-container">
             <div class="top-header-left">
-                <span class="top-header-info hide-mobile" data-translate="top_header_info"></span>
+                <div class="top-header-info hide-mobile">
+                    <span class="info-item">
+                        <svg class="info-svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <span data-translate="top_header_support">Yordam: 1244</span>
+                    </span>
+                    <span class="info-divider">|</span>
+                    <span class="info-item">
+                        <svg class="info-svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"></line><line x1="6" y1="18" x2="6" y2="11"></line><line x1="10" y1="18" x2="10" y2="11"></line><line x1="14" y1="18" x2="14" y2="11"></line><line x1="18" y1="18" x2="18" y2="11"></line><polygon points="12 2 2 7 22 7"></polygon></svg>
+                        <span data-translate="top_header_license">MB litsenziyasi № 254</span>
+                    </span>
+                </div>
             </div>
             <div class="top-header-actions">
                 <!-- Search: desktop da bu yerda, mobilda yashiriladi -->
@@ -33,12 +43,20 @@
                     <input type="text" data-translate-placeholder="search_placeholder" placeholder="Qidiruv">
                     <span class="icon-svg icon-search"></span>
                 </div>
-                <div class="lang-selector">
-                    <select id="lang-select" aria-label="Tilni tanlash">
-                        <option value="uz">UZ</option>
-                        <option value="ru">RU</option>
-                    </select>
+                
+                <!-- Custom Hover Language Selector -->
+                <div class="lang-dropdown-container">
+                    <div class="lang-trigger">
+                        <span class="lang-current">UZ</span>
+                        <svg class="chevron-down-svg" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l4 4 4-4"/></svg>
+                    </div>
+                    <ul class="lang-dropdown-menu">
+                        <li class="lang-option active" data-value="uz">UZ</li>
+                        <li class="lang-option" data-value="ru">RU</li>
+                        <li class="lang-option" data-value="en">EN</li>
+                    </ul>
                 </div>
+                
                 <a href="#" class="btn-login-link" data-translate="kirish"></a>
             </div>
         </div>

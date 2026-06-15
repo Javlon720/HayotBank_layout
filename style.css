@@ -37,9 +37,9 @@
 
   /* Shadows & Glassmorphism */
   --glass-bg: rgba(255, 255, 255, 0.75);
-  --glass-border: rgba(2, 103, 108, 0.12);
-  --glass-border-hover: rgba(2, 103, 108, 0.25);
-  --glass-glow: 0 8px 32px 0 rgba(2, 103, 108, 0.06);
+  --glass-border: rgba(16, 185, 129, 0.18);
+  --glass-border-hover: rgba(16, 185, 129, 0.35);
+  --glass-glow: 0 8px 32px 0 rgba(16, 185, 129, 0.06);
 
   /* Ambient glow opacity */
   --glow-opacity: 0.15;
@@ -511,44 +511,109 @@ body.light-theme .btn-outline:hover {
   pointer-events: none;
 }
 
-/* Lang selector in Top Header */
-.top-header .lang-selector select {
-  height: 28px;
-  font-size: 1.2rem;
-  padding: 0 6px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
+/* Custom Hover Language Selector */
+.lang-dropdown-container {
+  position: relative;
   cursor: pointer;
-  outline: none;
+  z-index: 1010;
+}
+
+.lang-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(2, 103, 108, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
   transition: all 0.3s ease;
 }
 
-.top-header .lang-selector select:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  color: var(--text-white);
+.lang-trigger:hover {
+  background: rgba(2, 103, 108, 0.08);
+  border-color: rgba(16, 185, 129, 0.45);
 }
 
-body.light-theme .top-header .lang-selector select {
-  background: rgba(0, 0, 0, 0.03);
-  border-color: rgba(0, 0, 0, 0.08);
-  color: var(--text-primary);
+.chevron-down-svg {
+  transition: transform 0.3s ease;
+  color: var(--hb-primary);
 }
 
-body.light-theme .top-header .lang-selector select:hover {
-  border-color: rgba(0, 0, 0, 0.3);
-  color: var(--text-white);
+.lang-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--dark-slate-light);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 25px rgba(2, 103, 108, 0.12);
+  border-radius: 12px;
+  padding: 6px 0;
+  min-width: 80px;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.top-header .lang-selector select option {
-  background-color: var(--dark-slate-light);
-  color: var(--text-primary);
+.lang-dropdown-container:hover .lang-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
-body.light-theme .top-header .lang-selector select option {
-  background-color: #FFFFFF;
-  color: var(--text-white);
+.lang-dropdown-container:hover .chevron-down-svg {
+  transform: rotate(180deg);
+}
+
+.lang-option {
+  padding: 8px 16px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.lang-option:hover {
+  background: rgba(2, 103, 108, 0.05);
+  color: var(--hb-primary);
+}
+
+.lang-option.active {
+  color: var(--hb-primary);
+  font-weight: 700;
+  background: rgba(2, 103, 108, 0.08);
+}
+
+/* Info SVG Icons in Top Header */
+.top-header-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.info-svg-icon {
+  color: var(--emerald);
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.info-divider {
+  color: rgba(2, 103, 108, 0.15);
+  margin: 0 4px;
 }
 
 /* Theme Toggle Button in Top Header — DISABLED
@@ -2299,66 +2364,7 @@ body.light-theme .theme-toggle-btn .moon-icon {
 }
 */
 
-/* Lang Selector */
-.lang-selector {
-  display: flex;
-  align-items: center;
-}
 
-.lang-selector select {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-muted);
-  height: 38px;
-  border-radius: var(--border-radius-sm);
-  padding: 0 10px;
-  font-size: 1.4rem;
-  font-weight: 600;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.lang-selector select:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  color: var(--text-white);
-}
-
-.lang-selector select option {
-  background-color: var(--dark-slate-light);
-  color: var(--text-white);
-}
-
-/* ==========================================
- * Light Theme Specific Overrides — Toggle DISABLED
- * ==========================================
-body.light-theme .theme-toggle-btn {
-  border-color: rgba(0, 0, 0, 0.1);
-  color: var(--text-muted);
-}
-
-body.light-theme .theme-toggle-btn:hover {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.3);
-  color: var(--text-primary);
-}
-*/
-
-body.light-theme .lang-selector select {
-  border-color: rgba(0, 0, 0, 0.1);
-  color: var(--text-muted);
-  background: rgba(0, 0, 0, 0.02);
-}
-
-body.light-theme .lang-selector select:hover {
-  border-color: rgba(0, 0, 0, 0.3);
-  color: var(--text-primary);
-}
-
-body.light-theme .lang-selector select option {
-  background-color: #FFFFFF;
-  color: var(--text-dark);
-}
 
 
 
@@ -2373,7 +2379,7 @@ body.light-theme .subscribe-form input,
 body.light-theme .input-with-select input {
   color: var(--text-primary);
   background: rgba(0, 0, 0, 0.03);
-  border-color: rgba(0, 0, 0, 0.08);
+  border-color: rgba(16, 185, 129, 0.2);
 }
 
 body.light-theme .form-group input:focus,
@@ -2386,7 +2392,7 @@ body.light-theme .input-with-select input:focus {
 
 body.light-theme .input-with-select select {
   background: rgba(0, 0, 0, 0.04);
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 1px solid rgba(16, 185, 129, 0.2);
   color: var(--text-primary);
 }
 
@@ -2397,7 +2403,7 @@ body.light-theme .input-with-select select option {
 
 body.light-theme .converter-arrow {
   background: rgba(0, 0, 0, 0.03);
-  border-color: rgba(0, 0, 0, 0.08);
+  border-color: rgba(16, 185, 129, 0.2);
 }
 
 body.light-theme .range-slider {
@@ -2406,7 +2412,7 @@ body.light-theme .range-slider {
 
 body.light-theme .calc-toggle {
   background: rgba(0, 0, 0, 0.03);
-  border-color: rgba(0, 0, 0, 0.05);
+  border-color: rgba(16, 185, 129, 0.15);
 }
 
 body.light-theme .calc-tab {

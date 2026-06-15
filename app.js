@@ -44,31 +44,54 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // Bind dropdown event
-  const langSelect = document.getElementById('lang-select');
-  if (langSelect) {
-    langSelect.value = currentLang;
-    langSelect.addEventListener('change', (e) => {
-      const selectedLang = e.target.value;
-      localStorage.setItem('lang', selectedLang);
-      updateLanguage(selectedLang);
+  // Bind custom dropdown language selector event
+  const langDropdown = document.querySelector('.lang-dropdown-container');
+  if (langDropdown) {
+    const langCurrentText = langDropdown.querySelector('.lang-current');
+    const langOptions = langDropdown.querySelectorAll('.lang-option');
+
+    // Set initial language label
+    if (langCurrentText) {
+      langCurrentText.textContent = currentLang.toUpperCase();
+    }
+    langOptions.forEach(opt => {
+      if (opt.getAttribute('data-value') === currentLang) {
+        opt.classList.add('active');
+      } else {
+        opt.classList.remove('active');
+      }
+    });
+
+    langOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const selectedLang = option.getAttribute('data-value');
+        localStorage.setItem('lang', selectedLang);
+        
+        // Update UI
+        if (langCurrentText) {
+          langCurrentText.textContent = selectedLang.toUpperCase();
+        }
+        langOptions.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+
+        updateLanguage(selectedLang);
+      });
     });
   }
 
-
-
-
-  // Load external translations (i18n/uz.json, i18n/ru.json)
+  // Load external translations (i18n/uz.json, i18n/ru.json, i18n/en.json)
   async function loadTranslations() {
     try {
-      const [uzRes, ruRes] = await Promise.all([
+      const [uzRes, ruRes, enRes] = await Promise.all([
         fetch('i18n/uz.json'),
-        fetch('i18n/ru.json')
+        fetch('i18n/ru.json'),
+        fetch('i18n/en.json')
       ]);
-      if (!uzRes.ok || !ruRes.ok) throw new Error('Failed to fetch i18n files');
+      if (!uzRes.ok || !ruRes.ok || !enRes.ok) throw new Error('Failed to fetch i18n files');
       const uz = await uzRes.json();
       const ru = await ruRes.json();
-      translations = { uz, ru };
+      const en = await enRes.json();
+      translations = { uz, ru, en };
     } catch (err) {
       console.error('Failed to load translations:', err);
     }
