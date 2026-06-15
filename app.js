@@ -274,6 +274,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Card theme dots switcher
+  const cardElement = document.getElementById('card-3d');
+
   colorDots.forEach(dot => {
     dot.addEventListener('click', () => {
       // Set active dot
@@ -282,8 +284,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // Update card theme class
       const themeColor = dot.getAttribute('data-color');
-      card3d.className = 'card-3d'; // reset
-      card3d.classList.add(themeColor);
+      if (cardElement) {
+        cardElement.className = 'card-3d'; // reset
+        cardElement.classList.add(themeColor);
+      }
     });
   });
 
